@@ -1,0 +1,75 @@
+en:
+  console:
+    main_menu:
+      - 'Hello, we are RubyG bank!'
+      - 'If you want to create account - press `create`'
+      - 'If you want to load account - press `load`'
+      - 'If you want to exit - press `exit`'
+    account_menu:
+        - 'Welcome, %{name}'
+        - 'If you want to:'
+        - '- show all cards - press SC'
+        - '- create card - press CC'
+        - '- destroy card - press DC'
+        - '- put money on card - press PM'
+        - '- withdraw money on card - press WM'
+        - '- send money to another card  - press SM'
+        - '- destroy account - press DA'
+        - '- exit from account - press exit'
+    errors:
+      wrong_command: "Wrong command. Try again!"
+  account:
+    registration:
+      name: 'Enter your name'
+      age: 'Enter your age'
+      login: 'Enter your login'
+      password: 'Enter your password'
+    first: 'There is no active accounts, do you want to be the first?[y/n]'
+    destroy_account: 'Are you sure you want to destroy account?[%{y}/%{n}]'
+    errors:
+       name:
+         present: 'Your name must not be empty and starts with first upcase letter'
+       age:
+          present: 'Your Age must be greeter then 23 and lower then 90'
+       login:
+         present: 'Login must present'
+         longer: 'Login must be longer then 4 symbols'
+         shorter: 'Login must be shorter then 20 symbols'
+         exists: 'Such account is already exists'
+       password:
+         present: 'Password must present'
+         longer: 'Password must be longer then 6 symbols'
+         shorter: 'Password must be shorter then 30 symbols'
+       user_not_exists: 'There is no account with given credentials'
+  card:
+   create_card:
+     - 'You could create one of 3 card types'
+     - 'Usual card. 2% tax on card INCOME. 20$ tax on SENDING money from this card. 5% tax on WITHDRAWING money. For creation this card - press `usual`'
+     - 'Capitalist card. 10$ tax on card INCOME. 10% tax on SENDING money from this card. 4$ tax on WITHDRAWING money. For creation this card - press `capitalist`'
+     - 'Virtual card. 1$ tax on card INCOME. 1$ tax on SENDING money from this card. 12% tax on WITHDRAWING money. For creation this card - press `virtual`'
+   if_you_want_to_delete: 'If you want to delete:'
+   confirmation_delete_card: 'Are you sure you want to delete %{number}?[y/n]'
+   press_exit: 'press `exit` to exit'
+   errors:
+    no_active_cards: 'There is no active cards!'
+    wrong_card_type: 'Wrong card type. Try again!'
+    wrong_number: 'You entered wrong number!'
+  money:
+   choose_card_for_putting: 'Choose the card for putting:'
+   money_put_on: 'Money %{amount}$ was put on %{card_number}.'
+   balance_put_on: 'Balance: %{balance}$. Tax: %{tax}$'
+   choose_card_for_withdrawing: 'Choose the card for withdrawing:'
+   money_withdrawn: 'Money %{amount}$ withdrawn from %{card_number}.'
+   balance_withdrawn: 'Money left: %{balance}$. Tax: %{tax}$'
+   money_put_send: "Money %{amount}$ was send on %{card_number}."
+   choose_card_for_sending: 'Choose the card for sending:'
+   enter_the_recipient_card: 'Enter the recipient card:'
+   amount_money_put: 'Input the amount of money you want to put on your card'
+   amount_money_withdraw: 'Input the amount of money you want to withdraw'
+   errors:
+     correct_amount_money: 'You must input correct amount of money'
+     tax_higher: 'Your tax is higher than input amount'
+     correct_number_of_card: 'Please, input correct number of card'
+     no_card_found: 'There is no card with number %{card_number}'
+     not_enough_money_to_withdraw: "You don't have enough money on card for such operation"
+     not_enough_money_to_send: "There is no enough money on sender card"
