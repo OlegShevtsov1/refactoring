@@ -2,11 +2,11 @@ en:
   console:
     main_menu:
       - 'Hello, we are RubyG bank!'
-      - 'If you want to create account - press `create`'
-      - 'If you want to load account - press `load`'
-      - 'If you want to exit - press `exit`'
+      - '- If you want to create account - press `create`'
+      - '- If you want to load account - press `load`'
+      - '- If you want to exit - press `exit`'
+    welcome_user: "Welcome, %{name}"
     account_menu:
-        - 'Welcome, %{name}'
         - 'If you want to:'
         - '- show all cards - press SC'
         - '- create card - press CC'

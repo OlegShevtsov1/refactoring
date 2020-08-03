@@ -1,24 +1,24 @@
 module AccountHelper
-  def account_create
+  def create
     loop do
       @current_account = Account.new(name: name_input, age: age_input, login: login_input, password: password_input)
-      errors = @current_account.validate
-      break if errors.empty?
+      @current_account.validate
+      break if @current_account.errors.empty?
 
-      @errors.each { |error| puts error }
+      @current_account.errors.each { |error| puts error }
     end
     @current_account.create
-    main_menu
+    console
   end
 
-  def account_load
+  def load
     return create_the_first_account if @account.accounts.none?
 
     loop do
       @current_account = Account.new(login: login_input, password: password_input).load
       @current_account ? break : message('account.errors.user_not_exists')
     end
-    account_menu
+    main_menu
   end
 
   def destroy_account
@@ -52,7 +52,7 @@ module AccountHelper
     message('account.first')
     case gets.chomp
     when 'y'
-      account_create
+      create
     end
   end
 end

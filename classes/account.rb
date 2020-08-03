@@ -5,7 +5,7 @@ class Account
   AGE_RANGE = (23..90).freeze
   PASSWORD_LENGTH_RANGE = (6..30).freeze
 
-  attr_reader :name, :age, :login, :password, :cards
+  attr_reader :name, :age, :login, :password, :cards, :errors
 
   def initialize(name: nil, age: nil, login: nil, password: nil, cards: [])
     @name = name
@@ -36,7 +36,6 @@ class Account
     validate_login
     validate_login_exist
     validate_password
-    @errors
   end
 
   def accounts
@@ -61,29 +60,29 @@ class Account
   private
 
   def validate_name
-    @errors << message('account.errors.name.present') if @name == '' || @name[0] != @name[0].upcase
+    @errors << I18n.t('account.errors.name.present') if @name == '' || @name[0] != @name[0].upcase
   end
 
   def validate_age
-    @errors << message('account.errors.age.present') unless AGE_RANGE.include? @age.to_i
+    @errors << I18n.t('account.errors.age.present') unless AGE_RANGE.include? @age.to_i
   end
 
   def validate_login
-    @errors << message('account.errors.login.present') if @login == ''
-    @errors << message('account.errors.login.longer') if @login.length < LOGIN_LENGTH_RANGE.first
-    @errors << message('account.errors.login.shorter') if @login.length > LOGIN_LENGTH_RANGE.last
+    @errors << I18n.t('account.errors.login.present') if @login == ''
+    @errors << I18n.t('account.errors.login.longer') if @login.length < LOGIN_LENGTH_RANGE.first
+    @errors << I18n.t('account.errors.login.shorter') if @login.length > LOGIN_LENGTH_RANGE.last
   end
 
   def validate_login_exist
     return if loads.nil?
 
-    @errors << message('account.errors.login.exists') if loads.map(&:login).include? @login
+    @errors << I18n.t('account.errors.login.exists') if loads.map(&:login).include? @login
   end
 
   def validate_password
-    @errors << message('account.errors.password.present') if @password == ''
-    @errors << message('account.errors.password.longer') if @password.length < PASSWORD_LENGTH_RANGE.first
-    @errors << message('account.errors.password.shorter') if @password.length > PASSWORD_LENGTH_RANGE.last
+    @errors << I18n.t('account.errors.password.present') if @password == ''
+    @errors << I18n.t('account.errors.password.longer') if @password.length < PASSWORD_LENGTH_RANGE.first
+    @errors << I18n.t('account.errors.password.shorter') if @password.length > PASSWORD_LENGTH_RANGE.last
   end
 
   def find_account

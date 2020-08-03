@@ -12,25 +12,22 @@ class Console
     @card = Card.new
   end
 
-  def run
-    main_menu
-  end
-
-  def main_menu
+  def console
     message('console.main_menu')
     case gets.chomp
     when 'create'
-      account_create
+      create
     when 'load'
-      account_load
+      load
     else
       exit
     end
   end
 
-  def account_menu
+  def main_menu
     loop do
-      message('console.account_menu', name: @current_account.name)
+      message('console.welcome_user', name: @current_account.name)
+      message('console.account_menu')
       begin
         method = ACCOUNT_MENU.fetch(gets.chomp.to_sym)
         send(method)
