@@ -20,8 +20,8 @@ class Account
     save(accounts << self)
   end
 
-  def load
-    find_account
+  def find
+    loads.find { |account| account.login == @login && account.password == @password }
   end
 
   def destroy
@@ -83,9 +83,5 @@ class Account
     @errors << I18n.t('account.errors.password.present') if @password == ''
     @errors << I18n.t('account.errors.password.longer') if @password.length < PASSWORD_LENGTH_RANGE.first
     @errors << I18n.t('account.errors.password.shorter') if @password.length > PASSWORD_LENGTH_RANGE.last
-  end
-
-  def find_account
-    loads.find { |account| account.login == @login && account.password == @password }
   end
 end

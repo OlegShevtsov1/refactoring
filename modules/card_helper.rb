@@ -16,7 +16,7 @@ module CardHelper
       card_type = card_type_input
       break if card_type == 'exit'
 
-      card = Card.new.create(card_type)
+      card = Card.new.create(card_type, @current_account)
       return @current_account.save_card(card) if card
 
       message('card.errors.wrong_card_type')

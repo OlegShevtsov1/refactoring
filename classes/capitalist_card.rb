@@ -1,6 +1,6 @@
-class CapitalistCard < BaseCard
+class CapitalistCard < Card
   attr_reader :balance, :type
-  def initialize
+  def initialize(account)
     super
 
     @balance = 150

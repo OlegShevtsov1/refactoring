@@ -15,7 +15,7 @@ module AccountHelper
     return create_the_first_account if @account.accounts.none?
 
     loop do
-      @current_account = Account.new(login: login_input, password: password_input).load
+      @current_account = Account.new(login: login_input, password: password_input).find
       @current_account ? break : message('account.errors.user_not_exists')
     end
     main_menu

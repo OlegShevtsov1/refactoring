@@ -1,6 +1,6 @@
-class VirtualCard < BaseCard
+class VirtualCard < Card
   attr_reader :balance, :type
-  def initialize
+  def initialize(account)
     super
 
     @balance = 150

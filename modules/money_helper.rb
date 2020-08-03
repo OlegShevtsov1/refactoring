@@ -6,9 +6,11 @@ module MoneyHelper
     current_card_set(choose_card)
     amount_money = input_amount_money_put
 
-    return unless pass_check?(@current_card, :check_put, amount_money)
+    tax = @current_card.put_tax(amount_money)
+    @current_card.put_money(amount_money, tax)
+    binding.pry
+    return @current_card.errors.each { |error| puts message(error) } if @current_card.errors.any?
 
-    tax = @current_card.put_money(amount_money)
     @current_account.save_changes
     message('money.money_put_on', amount: amount_money, card_number: @current_card.number)
     message('money.balance_put_on', balance: @current_card.balance, tax: tax)
@@ -36,12 +38,12 @@ module MoneyHelper
     current_card_set(choose_card)
 
     recipient_card = input_recipient_card
-    return message('money.errors.correct_number_of_card') if BaseCard::CARD_NUMBER_LENGTH != recipient_card.length
+    return message('money.errors.correct_number_of_card') if Card::CARD_NUMBER_LENGTH != recipient_card.length
 
     if recipient_card_set(recipient_card)
       send_money_transfer
     else
-      message('card.errors.no_card_found', number: recipient_card)
+      message('money.errors.no_card_found', number: recipient_card)
     end
   end
 
@@ -105,5 +107,6 @@ module MoneyHelper
     message('money.balance_put_on', balance: @current_recipient_card.balance, tax: tax_put)
 
     @current_account.save_changes
+    @current_recipient_card.account.save_card(@current_recipient_card)
   end
 end
