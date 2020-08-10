@@ -1,9 +1,9 @@
-require 'simplecov'
-require 'undercover'
-
-SimpleCov.start do
-  add_filter(%r{\/spec\/})
-end
+# require 'simplecov'
+# require 'undercover'
+#
+# SimpleCov.start do
+#   add_filter(%r{\/spec\/})
+# end
 
 require_relative '../load'
 RSpec.configure do |config|

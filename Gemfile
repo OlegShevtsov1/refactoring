@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'i18n', '~> 1.8', '>= 1.8.3'
+gem 'rspec_junit_formatter', '~> 0.4.1'
 
 group :development do
   gem 'fasterer'
