@@ -20,26 +20,11 @@ class Card
     @balance += amount - tax
   end
 
-  def check_withdraw(amount)
-    return 'money.errors.wrong_amount' if amount <= 0
-    return 'money.errors.not_enough_money_to_withdraw' if amount + withdraw_tax(amount) > balance
-
-    :ok
-  end
-
-  def withdraw_money(amount)
-    tax = withdraw_tax(amount)
+  def withdraw_money(amount, tax)
+    return @errors << 'money.errors.wrong_amount' if amount <= 0
+    return @errors << 'money.errors.not_enough_money_to_withdraw' if amount + withdraw_tax(amount) > balance
 
     @balance -= amount + tax
-
-    tax
-  end
-
-  def check_send(amount)
-    return 'money.errors.wrong_amount' if amount <= 0
-    return 'money.errors.not_enough_money_to_send' if amount + send_tax(amount) > balance
-
-    :ok
   end
 
   private
