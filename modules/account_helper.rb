@@ -26,6 +26,14 @@ module AccountHelper
     @current_account.destroy if gets.chomp == 'y'
   end
 
+  def create_the_first_account
+    message('account.first')
+    case gets.chomp
+    when 'y'
+      create
+    end
+  end
+
   private
 
   def name_input
@@ -46,13 +54,5 @@ module AccountHelper
   def password_input
     message('account.registration.password')
     gets.chomp
-  end
-
-  def create_the_first_account
-    message('account.first')
-    case gets.chomp
-    when 'y'
-      create
-    end
   end
 end
