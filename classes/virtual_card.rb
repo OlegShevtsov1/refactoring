@@ -1,4 +1,8 @@
 class VirtualCard < Card
+  PUT_TAX = 1
+  WITHDRAW_TAX = 88
+  SEND_TAX = 1
+
   attr_reader :balance, :type
   def initialize(account)
     super
@@ -8,14 +12,14 @@ class VirtualCard < Card
   end
 
   def put_tax(_amount)
-    1
+    PUT_TAX
   end
 
   def withdraw_tax(amount)
-    amount * 0.88
+    amount * WITHDRAW_TAX / 100
   end
 
   def send_tax(_amount)
-    1
+    SEND_TAX
   end
 end

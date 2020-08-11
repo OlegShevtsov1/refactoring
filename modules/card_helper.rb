@@ -39,7 +39,10 @@ module CardHelper
   end
 
   def card_type_input
-    message('card.create_card')
+    tax = { u_put: UsualCard::PUT_TAX, u_send: UsualCard::SEND_TAX, u_withdraw: UsualCard::WITHDRAW_TAX,
+            v_put: VirtualCard::PUT_TAX, v_send: VirtualCard::SEND_TAX, v_withdraw: VirtualCard::WITHDRAW_TAX,
+            c_put: CapitalistCard::PUT_TAX, c_send: CapitalistCard::SEND_TAX, c_withdraw: CapitalistCard::WITHDRAW_TAX }
+    message('card.create_card', tax)
     message('card.press_exit')
     gets.chomp
   end

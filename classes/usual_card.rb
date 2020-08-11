@@ -1,4 +1,8 @@
 class UsualCard < Card
+  PUT_TAX = 2
+  WITHDRAW_TAX = 5
+  SEND_TAX = 20
+
   attr_reader :balance, :type
   def initialize(account)
     super
@@ -8,14 +12,14 @@ class UsualCard < Card
   end
 
   def put_tax(amount)
-    amount * 0.02
+    amount * PUT_TAX / 100
   end
 
   def withdraw_tax(amount)
-    amount * 0.05
+    amount * WITHDRAW_TAX / 100
   end
 
   def send_tax(_amount)
-    20
+    SEND_TAX
   end
 end

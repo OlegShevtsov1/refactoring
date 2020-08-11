@@ -1,9 +1,9 @@
 class Account
   include Uploader
 
-  LOGIN_LENGTH_RANGE = (4..20).freeze
+  LOGIN = (4..20).freeze
   AGE_RANGE = (23..90).freeze
-  PASSWORD_LENGTH_RANGE = (6..30).freeze
+  PASSWORD = (6..30).freeze
 
   attr_reader :name, :age, :login, :password, :cards, :errors
 
@@ -64,13 +64,14 @@ class Account
   end
 
   def validate_age
-    @errors << I18n.t('account.errors.age.present') unless AGE_RANGE.include? @age.to_i
+    age = { first_age: AGE_RANGE.first, last_age: AGE_RANGE.last }
+    @errors << I18n.t('account.errors.age.present', age) unless AGE_RANGE.include? @age.to_i
   end
 
   def validate_login
     @errors << I18n.t('account.errors.login.present') if @login == ''
-    @errors << I18n.t('account.errors.login.longer') if @login.length < LOGIN_LENGTH_RANGE.first
-    @errors << I18n.t('account.errors.login.shorter') if @login.length > LOGIN_LENGTH_RANGE.last
+    @errors << I18n.t('account.errors.login.longer', login: LOGIN.first) if @login.length < LOGIN.first
+    @errors << I18n.t('account.errors.login.shorter', login: LOGIN.last) if @login.length > LOGIN.last
   end
 
   def validate_login_exist
@@ -81,7 +82,7 @@ class Account
 
   def validate_password
     @errors << I18n.t('account.errors.password.present') if @password == ''
-    @errors << I18n.t('account.errors.password.longer') if @password.length < PASSWORD_LENGTH_RANGE.first
-    @errors << I18n.t('account.errors.password.shorter') if @password.length > PASSWORD_LENGTH_RANGE.last
+    @errors << I18n.t('account.errors.password.longer', password: PASSWORD.first) if @password.length < PASSWORD.first
+    @errors << I18n.t('account.errors.password.shorter', password: PASSWORD.first) if @password.length > PASSWORD.last
   end
 end
