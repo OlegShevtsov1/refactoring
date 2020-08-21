@@ -275,54 +275,54 @@ RSpec.describe Account do
     #   end
   end
 
-  # describe '#load' do
-  #   context 'without active accounts' do
-  #     it do
-  #       expect(current_subject).to receive(:accounts).and_return([])
-  # expect(current_subject).to receive(:create_the_first_account).and_return([])
-  # current_subject.load
-  #   end
-  # end
+  describe '#load' do
+    context 'without active accounts' do
+      it do
+        expect(current_subject).to receive(:create_the_first_account).and_return([])
+        current_subject.load
+      end
+    end
 
-  # context 'with active accounts' do
-  #   let(:login) { 'Johnny' }
-  #   let(:password) { 'johnny1' }
-  #
-  #   before do
-  #   allow(current_subject).to receive_message_chain(:gets, :chomp).and_return(*all_inputs)
-  #   allow(current_subject).to receive(:accounts) { [instance_double('Account', login: login, password: password)] }
-  #   end
-  #
-  #   context 'with correct outout' do
-  #     let(:all_inputs) { [login, password] }
-  #
-  #     it do
-  #       expect(current_subject).to receive(:main_menu)
-  #       [ASK_PHRASES[:login], ASK_PHRASES[:password]].each do |phrase|
-  #         expect(current_subject).to receive(:puts).with(phrase)
-  #       end
-  #       current_subject.load
-  #     end
-  #   end
-  #
-  #   context 'when account exists' do
-  #     let(:all_inputs) { [login, password] }
-  #
-  #     it do
-  #       expect(current_subject).to receive(:main_menu)
-  #       expect { current_subject.load }.not_to output(/#{ERROR_PHRASES[:user_not_exists]}/).to_stdout
-  #     end
-  #   end
-  #
-  #   context 'when account doesn\t exists' do
-  #     let(:all_inputs) { ['test', 'test', login, password] }
-  #
-  #     it do
-  #       expect(current_subject).to receive(:main_menu)
-  #       expect { current_subject.load }.to output(/#{ERROR_PHRASES[:user_not_exists]}/).to_stdout
-  #     end
-  #   end
-  # end
+    context 'with active accounts' do
+      let(:login) { 'Johnny' }
+      let(:password) { 'johnny1' }
+
+      before do
+        described_class.new(login: login, password: password).create
+        allow(current_subject).to receive_message_chain(:gets, :chomp).and_return(*all_inputs)
+      end
+
+      context 'with correct outout' do
+        let(:all_inputs) { [login, password] }
+
+        it do
+          expect(current_subject).to receive(:main_menu)
+          [ASK_PHRASES[:login], ASK_PHRASES[:password]].each do |phrase|
+            expect(current_subject).to receive(:puts).with(phrase)
+          end
+          current_subject.load
+        end
+      end
+
+      context 'when account exists' do
+        let(:all_inputs) { [login, password] }
+
+        it do
+          expect(current_subject).to receive(:main_menu)
+          expect { current_subject.load }.not_to output(/#{ERROR_PHRASES[:user_not_exists]}/).to_stdout
+        end
+      end
+
+      context 'when account doesn\t exists' do
+        let(:all_inputs) { ['test', 'test', login, password] }
+
+        it do
+          expect(current_subject).to receive(:main_menu)
+          expect { current_subject.load }.to output(/#{ERROR_PHRASES[:user_not_exists]}/).to_stdout
+        end
+      end
+    end
+  end
 
   describe '#create_the_first_account' do
     let(:cancel_input) { 'sdfsdfs' }
