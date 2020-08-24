@@ -1,6 +1,7 @@
 require 'yaml'
 
 require 'i18n'
+require 'pry'
 require_relative 'config/i18n_config'
 
 require_relative 'errors/not_enough_money_error'

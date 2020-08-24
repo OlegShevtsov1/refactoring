@@ -7,20 +7,20 @@ en:
   destroy_account_message: "Are you sure you want to destroy account?[y/n]\n"
 
   invalid_name_message: 'Your name must not be empty and starts with first upcase letter'
-  invalid_age_message: 'Your Age must be greeter then 23 and lower then 90'
+  invalid_age_message: 'Your Age must be greeter then %{first_age} and lower then %{first_age}'
   empty_login_message: 'Login must present'
-  short_login_message: 'Login must be longer then 4 symbols'
-  long_login_message: 'Login must be shorter then 20 symbols'
+  short_login_message: 'Login must be longer then %{login} symbols'
+  long_login_message: 'Login must be shorter then %{login} symbols'
   account_already_exist_message: 'Such account is already exists'
   empty_password_message: 'Password must present'
-  short_password_message: 'Password must be longer then 6 symbols'
-  long_password_message: 'Password must be shorter then 30 symbols'
+  short_password_message: 'Password must be longer then %{password} symbols'
+  long_password_message: 'Password must be shorter then %{password} symbols'
 
   create_card_message: |
     You could create one of 3 card types
-    - Usual card. 2% tax on card INCOME. 20$ tax on SENDING money from this card. 5% tax on WITHDRAWING money. For creation this card - press `usual`
-    - Capitalist card. 10$ tax on card INCOME. 10% tax on SENDING money from this card. 4$ tax on WITHDRAWING money. For creation this card - press `capitalist`
-    - Virtual card. 1$ tax on card INCOME. 1$ tax on SENDING money from this card. 12% tax on WITHDRAWING money. For creation this card - press `virtual`
+    - Usual card. %{u_put}% tax on card INCOME. %{u_send}$ tax on SENDING money from this card. %{u_withdraw}% tax on WITHDRAWING money. For creation this card - press `usual`
+    - Capitalist card. %{c_put}$ tax on card INCOME. %{c_send}% tax on SENDING money from this card. %{c_withdraw}$ tax on WITHDRAWING money. For creation this card - press `capitalist`
+    - Virtual card. %{v_put}$ tax on card INCOME. %{v_send}$ tax on SENDING money from this card. %{v_withdraw}% tax on WITHDRAWING money. For creation this card - press `virtual`
     - For exit - press `exit`
   destroy_card_message: 'If you want to delete:'
   destroy_card_confirmation_message: "Are you sure you want to delete %{card_number}?[y/n]"
