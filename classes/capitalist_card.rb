@@ -4,6 +4,7 @@ class CapitalistCard < Card
   SEND_TAX = 1
 
   attr_reader :balance, :type
+
   def initialize(account)
     super
 

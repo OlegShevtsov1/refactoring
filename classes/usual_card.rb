@@ -4,6 +4,7 @@ class UsualCard < Card
   SEND_TAX = 20
 
   attr_reader :balance, :type
+
   def initialize(account)
     super
 

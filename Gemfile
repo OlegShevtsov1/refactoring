@@ -2,15 +2,17 @@
 
 source 'https://rubygems.org'
 
-gem 'i18n', '~> 1.8', '>= 1.8.3'
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+gem 'i18n'
 gem 'rspec_junit_formatter', '~> 0.4.1'
 
 group :development do
   gem 'fasterer'
   gem 'pry'
   gem 'rubocop'
-  gem 'rubocop-performance', require: false
   gem 'rubocop-rspec'
+  gem 'solargraph'
 end
 
 group :test do
