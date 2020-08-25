@@ -5,7 +5,6 @@ SimpleCov.start do
   add_filter(%r{/spec/})
 end
 
-# require_relative '../account'
 require 'rubyg_bank'
 
 RSpec.configure do |config|

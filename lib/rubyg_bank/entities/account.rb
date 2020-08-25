@@ -43,7 +43,7 @@ class Account
     save
   end
 
-  def send(card_from, card_to, amount)
+  def send_money(card_from, card_to, amount)
     card_from.send(card_to, amount)
     recepient = Account.accounts.detect { |account| account.cards.map(&:number).include?(card_to.number) }
     save

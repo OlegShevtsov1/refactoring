@@ -61,7 +61,7 @@ class TransactionManager
     amount = amount_input(:withdraw_amount_message)
     return put_message(:invalid_amount_message) unless amount.positive?
 
-    @account.send(card_from, card_to, amount)
+    @account.send_money(card_from, card_to, amount)
     put_message(:sended_money_message, amount: amount, recepient_card: card_to.number, put_tax: card_to.put_tax(amount),
                                        sender_card: card_from.number, send_tax: card_from.sender_tax(amount))
     true

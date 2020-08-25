@@ -1,6 +1,6 @@
 module ConsoleHelper
-  YES_COMMAND = I18n.t(:yes_command).freeze
-  EXIT_COMMAND = I18n.t(:exit_command).freeze
+  YES_COMMAND = 'y'.freeze
+  EXIT_COMMAND = 'exit'.freeze
 
   def put_message(message_symbol, **args)
     puts(I18n.t(message_symbol, **args))

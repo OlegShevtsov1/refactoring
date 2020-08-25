@@ -5,7 +5,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'i18n'
-gem 'rspec_junit_formatter', '~> 0.4.1'
 
 group :development do
   gem 'fasterer'
@@ -18,6 +17,7 @@ end
 
 group :test do
   gem 'rspec', '~> 3.8'
+  gem 'rspec_junit_formatter', '~> 0.4.1'
   gem 'simplecov'
   gem 'simplecov-lcov'
   gem 'undercover'

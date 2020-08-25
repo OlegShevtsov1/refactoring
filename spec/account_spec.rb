@@ -46,7 +46,7 @@ RSpec.describe Account do
 
       it 'sends money from one card to another' do
         expect(card).to receive(:send).with(card_to, amount)
-        account.send(card, card_to, amount)
+        account.send_money(card, card_to, amount)
       end
     end
   end

@@ -7,14 +7,14 @@ class Console
   }.freeze
 
   MENU_COMMANDS = {
-    I18n.t(:show_cards_command) => :show_cards,
-    I18n.t(:create_card_command) => :create_card,
-    I18n.t(:destroy_card_command) => :destroy_card,
-    I18n.t(:put_money_command) => :put_money,
-    I18n.t(:withdraw_money_command) => :withdraw_money,
-    I18n.t(:send_money_command) => :send_money,
-    I18n.t(:destroy_account_command) => :destroy_account,
-    I18n.t(:exit_command) => :exit
+    'SC' => :show_cards,
+    'CC' => :create_card,
+    'DC' => :destroy_card,
+    'PM' => :put_money,
+    'WM' => :withdraw_money,
+    'SM' => :send_money,
+    'DA' => :destroy_account,
+    'exit' => :exit
   }.freeze
 
   def console

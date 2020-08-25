@@ -1,6 +1,5 @@
 class BaseCard
-  attr_reader :number
-  attr_accessor :balance
+  attr_reader :number, :balance
 
   NUMBER_LENGTH = 16
 

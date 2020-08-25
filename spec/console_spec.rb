@@ -1,4 +1,3 @@
-# RSpec.describe Account do
 RSpec.describe Console do
   subject(:console) { described_class.new }
 
@@ -336,10 +335,6 @@ RSpec.describe Console do
         allow(console).to receive_message_chain(:gets, :chomp).and_return('SC', 'exit')
         console.instance_variable_set(:@current_account, instance_double('Account', name: name))
         expect { console.main_menu }.to output(/#{I18n.t(:main_menu_message, name: name)}/).to_stdout
-        # MAIN_OPERATIONS_TEXTS.each do |text|
-        #   allow(console).to receive_message_chain(:gets, :chomp).and_return('SC', 'exit')
-        #   expect { console.main_menu }.to output(/#{text}/).to_stdout
-        # end
       end
     end
 
