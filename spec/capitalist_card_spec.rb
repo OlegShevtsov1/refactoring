@@ -28,7 +28,7 @@ RSpec.describe CapitalistCard do
     let(:card_to) { described_class.create }
 
     it 'sends money from one card to another with tax' do
-      card.send(card_to, amount)
+      card.send_money(card_to, amount)
       expect(card.balance).to eq described_class::START_BALANCE - amount - card.sender_tax(amount)
       expect(card_to.balance).to eq described_class::START_BALANCE + amount - card_to.put_tax(amount)
     end

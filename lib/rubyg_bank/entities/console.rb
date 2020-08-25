@@ -2,8 +2,8 @@ class Console
   include ConsoleHelper
 
   AUTHORIZATION_COMMANDS = {
-    create: I18n.t(:create_command),
-    load: I18n.t(:load_command)
+    create: 'create',
+    load: 'load'
   }.freeze
 
   MENU_COMMANDS = {

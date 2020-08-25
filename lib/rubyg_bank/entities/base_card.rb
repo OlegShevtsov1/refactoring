@@ -37,7 +37,7 @@ class BaseCard
     @balance += amount - tax
   end
 
-  def send(card, amount)
+  def send_money(card, amount)
     full_amount = amount + sender_tax(amount)
     raise NotEnoughMoneyError if @balance < full_amount
 

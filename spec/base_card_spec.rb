@@ -27,7 +27,7 @@ RSpec.describe BaseCard do
     let(:card_to) { described_class.new(start_balance) }
 
     it 'sends money from one card to another' do
-      card.send(card_to, amount)
+      card.send_money(card_to, amount)
       expect(card.balance).to eq start_balance - amount
       expect(card_to.balance).to eq start_balance + amount
     end
