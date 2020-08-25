@@ -6,8 +6,11 @@ class CardManager
   end
 
   def create_card
+    tax = { u_p: UsualCard::PUT_PERCENT, u_s: UsualCard::SENDER_FIXED, u_w: UsualCard::WITHDRAW_PERCENT,
+            v_p: VirtualCard::PUT_PERCENT, v_s: VirtualCard::SENDER_FIXED, v_w: VirtualCard::WITHDRAW_PERCENT,
+            c_p: CapitalistCard::PUT_PERCENT, c_s: CapitalistCard::SENDER_FIXED, c_w: CapitalistCard::WITHDRAW_PERCENT }
     loop do
-      put_message(:create_card_message)
+      put_message(:create_card_message, tax)
       card_type = card_types[input]
       return @account.add_card(card_type.create) unless card_type.nil?
 

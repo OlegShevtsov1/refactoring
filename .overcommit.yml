@@ -1,0 +1,22 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: warn
+    required: true
+
+  Fasterer:
+    enabled: true
+    on_warn: warn
+    required: true
+
+  TrailingPeriod:
+    enabled: true
+    on_warn: fail
+
+  TextWidth:
+    enabled: true
+    on_warn: fail
+
+  SingleLineSubject:
+    enabled: true
+    on_warn: fail

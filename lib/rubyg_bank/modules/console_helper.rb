@@ -10,8 +10,14 @@ module ConsoleHelper
     gets.chomp
   end
 
-  def put_errors(*errors)
+  def put_error(*errors)
     errors.each { |error| put_message(error) }
+  end
+
+  def put_errors(errors)
+    errors.each do |error|
+      put_message(error[:error], **error[:params])
+    end
   end
 
   def choose_card(message_symbol, cards)

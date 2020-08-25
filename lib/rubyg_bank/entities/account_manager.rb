@@ -18,7 +18,7 @@ class AccountManager
       account = Account.accounts.detect { |acc| acc.login == login && acc.password == password }
       return account unless account.nil?
 
-      put_errors(:invalid_credentials_message)
+      put_error(:invalid_credentials_message)
     end
   end
 

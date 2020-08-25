@@ -32,17 +32,18 @@ RSpec.describe Console do
       },
       login: {
         present: I18n.t(:empty_login_message),
-        longer: I18n.t(:short_login_message),
-        shorter: I18n.t(:long_login_message),
+        longer: I18n.t(:short_login_message, login: AccountValidator::LOGIN.first),
+        shorter: I18n.t(:long_login_message, login: AccountValidator::LOGIN.last),
         exists: I18n.t(:account_already_exist_message)
       },
       password: {
         present: I18n.t(:empty_password_message),
-        longer: I18n.t(:short_password_message),
-        shorter: I18n.t(:long_password_message)
+        longer: I18n.t(:short_password_message, password: AccountValidator::PASSWORD.first),
+        shorter: I18n.t(:long_password_message, password: AccountValidator::PASSWORD.last)
       },
       age: {
-        length: I18n.t(:invalid_age_message)
+        length: I18n.t(:invalid_age_message, first_age: AccountValidator::AGE_RANGE.first,
+                                             last_age: AccountValidator::AGE_RANGE.last)
       }
     }
   end
@@ -441,6 +442,11 @@ RSpec.describe Console do
   describe '#create_card' do
     let(:account) { Account.new(name: '', age: 0, login: '', password: '') }
     let(:card_manager) { CardManager.new(account) }
+    let(:tax) do
+      { u_p: UsualCard::PUT_PERCENT, u_s: UsualCard::SENDER_FIXED, u_w: UsualCard::WITHDRAW_PERCENT,
+        v_p: VirtualCard::PUT_PERCENT, v_s: VirtualCard::SENDER_FIXED, v_w: VirtualCard::WITHDRAW_PERCENT,
+        c_p: CapitalistCard::PUT_PERCENT, c_s: CapitalistCard::SENDER_FIXED, c_w: CapitalistCard::WITHDRAW_PERCENT }
+    end
 
     before do
       console.instance_variable_set(:@card_manager, card_manager)
@@ -448,7 +454,7 @@ RSpec.describe Console do
 
     context 'with correct output' do
       it do
-        expect(card_manager).to receive(:puts).with(I18n.t(:create_card_message))
+        expect(card_manager).to receive(:puts).with(I18n.t(:create_card_message, tax))
         console.instance_variable_set(:@current_account, account)
         allow(Account).to receive(:accounts).and_return([])
         allow(Account).to receive(:save_account)

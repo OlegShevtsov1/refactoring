@@ -32,7 +32,7 @@ class TransactionManager
     index = parse_index(index)
     card_index_valid?(index, @account) ? yield(@account.cards[index]) : put_message(:wrong_number_message)
   rescue NotEnoughMoneyError, TooSmallAmountError => e
-    put_errors(e)
+    put_error(e)
   end
 
   def do_operation_with_card(operation_message, done_message, card, operation)

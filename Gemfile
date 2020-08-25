@@ -9,6 +9,7 @@ gem 'rspec_junit_formatter', '~> 0.4.1'
 
 group :development do
   gem 'fasterer'
+  gem 'overcommit', '~> 0.53.0', require: false
   gem 'pry'
   gem 'rubocop'
   gem 'rubocop-rspec'
